@@ -79,17 +79,6 @@ Game.prototype.bindEvents = function () {
       that.game()
     })
 
-    // double clicking on a cell and opening the cell and all 8 of its neightbors
-    target.addEventListener('dblclick', function () {
-      if (target.isFlagged) return
-      that.moveIt()
-
-      target.reveal()
-      var neighbors = Array.prototype.filter.call(document.querySelectorAll(target.neighbors), function (neightbor) { return neightbor.isMasked && !neightbor.isFlagged })
-      Array.prototype.forEach.call(neighbors, function triggerfriends (n) { setTimeout(function () { n.dispatchEvent(new MouseEvent('click')) }, 5) })
-      that.game()
-    })
-
     // marking a cell as a potential bomb
     target.addEventListener('contextmenu', function (evt) {
       evt.preventDefault()
