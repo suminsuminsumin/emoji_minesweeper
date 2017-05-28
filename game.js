@@ -115,6 +115,7 @@ Game.prototype.game = function () {
   if (bombs.length > 0) { this.lifes = 1 }
   if (bombs.length > 1) { this.lifes = 0 }
   document.getElementById('lifes').textContent = this.lifes  
+  
   if (bombs.length > 2) {
     Array.prototype.forEach.call(masked, function (cell) { cell.reveal() })
     this.result = 'lost'
