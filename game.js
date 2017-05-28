@@ -18,6 +18,7 @@ Game.prototype.init = function () {
   if (this.number_of_cells <= this.number_of_bombs) { alert('too many bombs, are you drunk?'); return false }
   var that = this
   this.moveIt(true)
+  this.lifeIt(true)
   this.map.innerHTML = ''
   this.bomb_array().forEach(function (a, i) {
     var mine = that.mine(a)
@@ -111,7 +112,10 @@ Game.prototype.game = function () {
     return cell.isBomb && !cell.isMasked
   })
 
-  if (bombs.length > 0) {
+  if (bombs.length > 0) { this.lifes = 1 }
+  if (bombs.length > 1) { this.lifes = 0 }
+  document.getElementById('lifes').textContent = this.lifes  
+  if (bombs.length > 2) {
     Array.prototype.forEach.call(masked, function (cell) { cell.reveal() })
     this.result = 'lost'
     this.showMessage()
@@ -201,6 +205,11 @@ Game.prototype.moveIt = function (zero) {
   zero ? this.moves = 0 : this.moves++
   document.getElementById('moves').textContent = this.moves
 }
+
+Game.prototype.lifeIt = function (zero) {
+	  if(zero) { this.lifes = 2 }
+	  document.getElementById('lifes').textContent = this.lifes
+	}
 
 Game.prototype.updateBombsLeft = function () {
   var flagged = Array.prototype.filter.call(document.getElementsByClassName('cell'), function (target) { return target.isFlagged })

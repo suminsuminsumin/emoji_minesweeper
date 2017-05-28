@@ -1,4 +1,4 @@
-<!doctype>
+﻿<!doctype>
 <html>
   <head>
     <title>💥</title>
@@ -377,7 +377,7 @@
       </div>
       <div class="bar flex-table">
         <div title="BOMBS" id="bombs-left" class="stat flex-cell">0</div>
-        <div title="MOVES" id="moves" class="stat flex-cell">0</div>
+     <div title="LIFE" id="lifes" class="stat flex-cell">0</div> </div>  <div class="bar flex-table"> <div title="MOVES" id="moves" class="stat flex-cell">0</div>
         <div title="TIME" id="timer" class="stat flex-cell">0</div>
         
       </div>
@@ -399,7 +399,7 @@
       var rows = document.getElementById('rows')
       var bombs = document.getElementById('bombs')
 
-      game = new Game(cols.value, rows.value, bombs.value, emojiset, document.getElementById('twemoji').checked)
+     game = new Game(cols.value, rows.value, bombs.value, emojiset, document.getElementById('twemoji').checked)
       leaderboard = new Leaderboard()
       //initializes highscores on first load only
       leaderboard.initScores()
